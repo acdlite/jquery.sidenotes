@@ -1,6 +1,7 @@
 {
   "name": "jquery.sidenotes",
   "version": "0.1.0",
+  "main": "lib/jquery.sidenotes.js",
   "authors": [
     "Andrew Clark <hi@andrewphilipclark.com>"
   ],
