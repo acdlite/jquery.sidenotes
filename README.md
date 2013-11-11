@@ -2,6 +2,22 @@
 
 Transform Markdown footnotes into superpowered sidenotes.
 
+## Installation
+
+Upload `jquery.sidenotes.min.js` to a server and add it to your document's head:
+
+```html
+<script src="jquery.sidenotes.min.js"></script>
+```
+
+### With Bower
+
+jQuery.sidenotes is available as a [Bower](http://bower.io) package.
+
+```bash
+bower install jquery.sidenotes
+```
+
 ## Usage
 
 With no configuration (use sensible defaults):
