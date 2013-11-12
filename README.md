@@ -39,6 +39,10 @@ $('.post').sidenotes({
 });
 ```
 
+## TODO
+
+* Write some tests.
+
 ## License
 
 Copyright 2013
