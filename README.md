@@ -7,8 +7,9 @@ Transform Markdown footnotes into superpowered[^notes] sidenotes.
 ## Installation
 
 Upload `jquery.sidenotes.min.js` to a server and add it to your document's head:
-
-    <script src="jquery.sidenotes.min.js"></script>
+```html
+<script src="jquery.sidenotes.min.js"></script>
+```
 
 ### With Bower
 
@@ -20,13 +21,17 @@ jQuery.sidenotes is available as a [Bower](http://bower.io) package.
 
 With no configuration (use sensible defaults):
 
-    // Apply to your post/document container(s).
-    $('.post').sidenotes();
+```javascript
+// Apply to your post/document container(s).
+$('.post').sidenotes();
+```
 
 With options:
 
-    // Pass a options object
-    $('.post').sidenotes({
-      'removeRefMarkRegex':     /-sn$/,
-      'initiallyHidden':        true
-    });
+```javascript
+// Pass a options object
+$('.post').sidenotes({
+  'removeRefMarkRegex':     /-sn$/,
+  'initiallyHidden':        true
+});
+```
