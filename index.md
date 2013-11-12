@@ -7,7 +7,11 @@ title: jQuery.sidenotes
 
 Transform [Markdown](http://daringfireball.net/projects/markdown/) footnotes into superpowered[^notes] sidenotes.
 
-[^notes]: Wanna see something cool? Resize this page and watch how this note adapts to different screen sizes. You can also use this page's [key bindings](#api) to experiment with the API.
+[^notes]: Wanna see something cool? Resize this page and watch how this note adapts to different screen sizes.
+
+Try it out now by changing the size of your browser window. At full width, notes on this page are rendered as sidenotes. At medium width, they are placed directly after their reference in the text. At small widths, they are rendered as normal footnotes.
+
+You can also use this page's [key bindings](#api) to experiment with the API. For example, press **h** and watch what happens. (Press **s** to reverse the change.)
 
 ## Installation
 
