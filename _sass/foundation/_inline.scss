@@ -1,0 +1,72 @@
+@mixin text() {
+  @include font-family(text);
+  color: color(text);
+  @include font-size(text);
+}
+
+%text {
+  @include text();
+}
+
+
+@mixin link-decoration($type) {
+  @if $type == 'inverted' {
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  } @else if $type == 'bare' {
+    &, &:hover {
+      text-decoration: none;
+    }
+  } @else if $type == 'normal' {
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none;
+    }
+  } @else if $type == 'none' {
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+%link-decoration-normal {
+  @include link-decoration(normal);
+}
+
+%link-decoration-inverted {
+  @include link-decoration(inverted);
+}
+
+%link-decoration-none {
+  @include link-decoration(none);
+}
+
+body {
+  @extend %text;
+}
+
+a {
+  @extend %link-decoration-inverted;
+  @include link-colors(color(text-link), color(text-link-hover));
+}
+
+@mixin caps {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+@mixin small-caps($size: font-size(small)) {
+  @include adjust-font-size-to($size);
+  @include caps;
+}
+
+%caps {
+  @include caps;
+}
+
+%small-caps {
+  @include small-caps;
+}

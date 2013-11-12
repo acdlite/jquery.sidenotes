@@ -1,11 +1,16 @@
 {
   "name": "jquery.sidenotes",
-  "version": "0.1.0",
-  "description": "Transform Markdown footnotes into superpowered sidenotes.",
+  "description": "Project page for jQuery.sidenotes",
   "private": true,
   "devDependencies": {
     "bower": "~1.2.6"
   },
   "author": "Andrew Clark <hi@andrewphilipclark.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-compass": "~0.6.0",
+    "grunt-contrib-coffee": "~0.7.0",
+    "grunt-contrib-watch": "~0.5.3"
+  }
 }

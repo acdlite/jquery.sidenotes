@@ -1,0 +1,76 @@
+// Vertical rhythm
+$base-font-size: 18px;
+$base-line-height: 28px;
+
+$rhythm-unit: rem;
+$rem-with-px-fallback: true;
+$round-to-nearest-half-line: true;
+
+$brand-font-size: (
+  x-small:              14px,
+  small:                16px,
+  regular:              $base-font-size,
+  large:                24px,
+  x-large:              32px,
+  xx-large:             48px,
+  xxx-large:            64px,
+  xxxx-large:           96px
+);
+
+@function brand-font-size($size) {
+  @return map-get($brand-font-size, $size);
+}
+
+$site-font-size: (
+  text:                 brand-font-size(regular),
+  code:                 brand-font-size(small),
+  h1:                   brand-font-size(x-large),
+  h2:                   brand-font-size(large),
+  h3:                   brand-font-size(regular),
+  h4:                   brand-font-size(regular),
+  h5:                   brand-font-size(regular),
+  h6:                   brand-font-size(regular)
+);
+
+@function site-font-size($size) {
+  @return map-get($site-font-size, $size);
+}
+
+@function font-size($size) {
+  @return brand-font-size($size) or site-font-size($size);
+}
+
+@mixin font-size($size) {
+  @include adjust-font-size-to(font-size($size));
+}
+
+@import url(//fonts.googleapis.com/css?family=Lato:400,700,900,400italic,700italic,900italic|Inconsolata);
+
+$brand-font-family: (
+  lato:                 ("Lato", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif),
+  inconsolata:          ("Inconsolata", Menlo, Monaco, Consolas, monospace)
+);
+
+@function brand-font-family($font) {
+  @return map-get($brand-font-family, $font);
+}
+
+$site-font-family: (
+  text:                 brand-font-family(lato),
+  heading:              brand-font-family(lato),
+  monospace:            brand-font-family(inconsolata)                
+);
+
+@function site-font-family($font) {
+  @return map-get($site-font-family, $font);
+}
+
+@function font-family($font) {
+  @return brand-font-family($font) or site-font-family($font);
+}
+
+@mixin font-family($font) {
+  font-family: font-family($font);
+}
+
+$indent: 2em;

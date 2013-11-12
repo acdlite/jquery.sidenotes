@@ -1,0 +1,23 @@
+hr {
+  $height: 2px;
+  $width: 40%;
+  $color: color(text-secondary);
+  width: 40%;
+  border: 0 {
+    @include rem(top, $height solid $color);
+  }
+  @include rem(margin-top, rhythm(2, $offset: $height));
+  @include trailer(5/2);
+  position: relative;
+
+  &:after {
+    content: "";
+    @include rem(height, $height * 2);
+    width: $width * 2;
+    background: $color;
+    position: absolute;
+    left: 50%;
+    @include rem(bottom, $height * -0.5);
+    margin-left: -1 * $width;
+  }
+}

@@ -1,0 +1,39 @@
+@function _grid($map, $g, $attr: false) {
+  $list: map-get($map, $g);
+  @if $attr == container-width { @return nth($list, 1) }
+  @if $attr == columns         { @return nth($list, 2) }
+  @if $attr == gutters         { @return nth($list, 3) }
+  @if $attr == total-columns {
+    $columns: nth($list, 2);
+    @if type-of($columns) != list { @return $columns }
+    $sum: 0;
+    @each $n in $columns {
+      $sum: $sum + $n;
+    }
+    @return $sum;
+  }
+  @return $list;
+}
+ 
+@function grid($g, $attr: false) {
+  @return _grid($grid, $g, $attr);
+}
+ 
+@function content-grid($g, $attr: false) {
+  @return _grid($content-grid, $g, $attr);
+}
+
+.container, %container {
+  @include container(hide);
+
+  @include breakpoint(break(medium)) {
+    @include use-grid(grid(medium)) {
+      @include container(hide);
+    }
+  }
+  @include breakpoint(break(large)) {
+    @include use-grid(grid(large)) {
+      @include container(hide);
+    }
+  }
+}

@@ -1,0 +1,39 @@
+// Susy settings
+$grid: (
+  small:                  90%  8 1/4,
+  medium:                 80%  8 1/4,
+  large:                  80% 12 1/4,
+);
+
+$content-grid: (
+  sidebar-left:           100% (3 9) 1/4,
+  sidebar-right:          100% (9 3) 1/4
+);
+
+// Breakpoint settings
+$medium-break: 600px;
+$large-break: 1000px;
+
+$break: (
+  medium:                    $medium-break,
+  large:                     $large-break,
+  only-small:                0 $medium-break,
+  only-medium:               $medium-break $large-break,
+  not-large:                 max-width $large-break
+);
+
+@function break($b) {
+  @return map-get($break, $b);
+}
+
+// Set default grid (mobile-first)
+@include set-grid(map-get($grid, small));
+
+@mixin square($size: 1em) {
+  width:  $size;
+  height: $size;
+}
+
+%reset-margin  { margin: 0; }
+%reset-border  { border: 0; }
+%reset-padding { padding: 0; }

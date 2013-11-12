@@ -1,0 +1,37 @@
+{
+  "name": "jquery.sidenotes",
+  "version": "0.1.0",
+  "main": "lib/jquery.asides.min.js",
+  "authors": [
+    "Andrew Clark <hi@andrewphilipclark.com>"
+  ],
+  "description": "Transform Markdown footnotes into superpowered sidenotes.",
+  "keywords": [
+    "sidenotes",
+    "Markdown",
+    "footnotes",
+    "jQuery",
+    "asides"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src"
+  ],
+  "dependencies": {
+    "jquery": "~2.0.2"
+  },
+  "homepage": "https://github.com/acdlite/jquery.sidenotes",
+  "_release": "0.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.1.0",
+    "commit": "9fbb0b98c0cbd2556751bc1036fb72b4cfcb54e2"
+  },
+  "_source": "git://github.com/acdlite/jquery.sidenotes.git",
+  "_target": "~0.1.0",
+  "_originalSource": "jquery.sidenotes",
+  "_direct": true
+}

@@ -1,0 +1,98 @@
+.site-content {
+  @include padding-leader(3);
+  @include padding-trailer(3);
+}
+
+@include breakpoint(break(large)) {
+  @include use-grid(grid(large)) {
+
+    %content-container--primary {
+      @include span(last 9);
+    }
+
+    %content-container--secondary {
+      @include span(3);
+    }
+  }
+
+  // TODO: improve BEM mixins to handle lists of selectors
+  @at-root .post__content, .post__title, .post__footer, .page__content, .page__title, .page__footer {
+    @extend %content-container--primary;
+    position: relative;
+  }
+}
+
+.post, .page {
+  @extend %clear-fix;
+
+  @at-root .post__date, .page__date {
+    @extend %small-caps;
+    @include padding-leader(1/2);
+    color: color(text-secondary);
+  }
+
+  @at-root .post__footer, .page__footer {
+    @include leader(2);
+    font-style: italic;
+  }
+
+  @at-root .post__title, .page__title {
+    @include leader(0);
+  }
+
+  *:first-child {
+    @include leader(0);
+  }
+}
+
+.post, .page {
+  aside, .footnotes {
+    @include font-size(small);
+    @include rem(padding, rhythm(1/2));
+  }
+
+  .footnotes > ol {
+    padding-left: 1em;
+    @include leader(1);
+  }
+
+  aside {
+    background: color(very-light-gray);
+
+    .ref-mark {
+      float: left;
+      margin-right: 0.4em;
+      @include font-size(x-small);
+      position: relative;
+      @include rem(top, -5px);
+
+      + * {
+        @include leader(0);
+      }
+    }
+
+    *:last-child {
+      @include trailer(0);
+    }
+
+    & + aside {
+      @include leader(1);
+    }
+  }
+
+  @include breakpoint(break(large)) {
+    @include use-grid(grid(large)) {
+      aside {
+        float: left;
+        clear: left;
+        $ratio: span(12) / span(8);
+        $width: span(3) * $ratio;
+        $outer-width: span(3 outer) * $ratio;
+        @include rem(width, $width);
+        @include rem(margin-right, -1 * $width);
+        position: relative;
+        @include rem(right, $outer-width);
+      }
+    }
+  }
+}

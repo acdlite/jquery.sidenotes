@@ -1,0 +1,30 @@
+#{headings()} {
+  @extend %reset-margin;
+
+  @include font-family(heading);
+
+  a {
+    @extend %link-decoration-none;
+    @include link-colors(color(heading-link), color(heading-link-hover));
+  }
+}
+
+h1 { 
+  @include font-size(h1);
+  font-weight: 900;
+}
+h2 { 
+  @include font-size(h2);
+}
+h3 { 
+  @include font-size(h3);
+}
+h4 { 
+  @include font-size(h4);
+}
+h5 { 
+  @include font-size(h5);
+}
+h6 { 
+  @include font-size(h6);
+}

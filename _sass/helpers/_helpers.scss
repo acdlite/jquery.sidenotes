@@ -1,0 +1,44 @@
+@mixin clear-fix {
+  &:before,
+  &:after {
+    display: table;
+    content: " ";
+  }
+
+  &:after { clear: both; }
+
+  *zoom: 1;
+}
+
+%clear-fix {
+  @include clear-fix;
+}
+
+@mixin visually-hidden {
+  @include square(1px);
+  position: absolute;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+%visually-hidden {
+  @include visually-hidden;
+}
+
+/* BEM syntax */
+// Elements get appended with "__" and the $name
+@mixin e($name) {
+  @at-root   #{&}__#{$name} {
+    @content;
+  }
+}
+
+// Modifiers get appended with "--" and the $name
+@mixin m($name) {
+  @at-root   #{&}--#{$name} {
+    @content;
+  }
+}

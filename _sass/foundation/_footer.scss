@@ -1,0 +1,20 @@
+// Sticky footer
+
+$footer-height: rhythm(3);
+
+html, body {
+  height: 100%;
+}
+.page-wrap {
+  min-height: 100%;
+  margin-bottom: -1 * $footer-height; 
+
+  &:after {
+    content: "";
+    display: block;
+  }
+}
+
+.sticky-footer, .page-wrap:after {
+  height: $footer-height; 
+}

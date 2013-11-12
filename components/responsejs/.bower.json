@@ -1,0 +1,15 @@
+{
+  "name": "responsejs",
+  "homepage": "https://github.com/ryanve/response.js",
+  "version": "0.7.8",
+  "_release": "0.7.8",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.7.8",
+    "commit": "277e64f8cb6729c22b9ce2dea1c41c6b5406e301"
+  },
+  "_source": "git://github.com/ryanve/response.js.git",
+  "_target": "~0.7.8",
+  "_originalSource": "responsejs",
+  "_direct": true
+}

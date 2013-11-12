@@ -1,0 +1,50 @@
+$debug-vertical-alignment: false;
+
+// Returns whitespace between lines
+// Assumes rems
+@function line-leader($line-height: $base-line-height, $font-size: $base-font-size) {
+  @return convert-length($base-line-height - $base-font-size, rem) / 2;
+}
+
+@if $debug-vertical-alignment {
+  .page-wrap {
+    @include debug-vertical-alignment;
+  }
+}
+
+%rhythm-1 {
+  @include rhythm(1);
+}
+
+p, ul, ol {
+  @extend %rhythm-1;
+
+  #{headings()} + & {
+    @include leader(0);
+  }
+}
+
+pre {
+  @include leader(1);
+  @include trailer(3/2);
+}
+
+h1 {
+  @include leader(3/2);
+  @include trailer(1);
+}
+
+h2 {
+  @include leader(3/2);
+  @include trailer(1);
+}
+
+h3 {
+  @include leader(1);
+  @include trailer(1/2);
+}
+
+#{headings(4, 6)} {
+  @include trailer(1);
+  @include rhythm(0);
+}
