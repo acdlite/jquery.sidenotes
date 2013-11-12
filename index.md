@@ -197,7 +197,7 @@ Destroys the plugin instance. Removes the sidenotes and shows the footnotes.
 
 ## Requirements
 
-* jQuery (obviously)
+* jQuery
 * Markdown-generated content, or markup that mimics it.
 
 ## License
