@@ -2,6 +2,8 @@
 
 Transform Markdown footnotes into superpowered sidenotes.
 
+Visit the [project page](http://acdlite.github.io/jquery.sidenotes/) for full details.
+
 ## Installation
 
 Upload `jquery.sidenotes.min.js` to a server and add it to your document's head:
