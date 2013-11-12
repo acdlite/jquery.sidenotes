@@ -1,8 +1,6 @@
 # jQuery.sidenotes
 
-Transform Markdown footnotes into superpowered[^notes] sidenotes.
-
-[^notes]: Wanna see something cool? Resize this page and watch how this note adapts to different screen sizes.
+Transform Markdown footnotes into superpowered sidenotes.
 
 ## Installation
 
