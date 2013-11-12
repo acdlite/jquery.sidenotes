@@ -5,36 +5,43 @@ title: jQuery.sidenotes
 
 # jQuery.sidenotes
 
-Transform Markdown footnotes into superpowered[^notes] sidenotes.
+Transform [Markdown](http://daringfireball.net/projects/markdown/) footnotes into superpowered[^notes] sidenotes.
 
-[^notes]: Wanna see something cool? Resize this page and watch how this note adapts to different screen sizes.
+[^notes]: Wanna see something cool? Resize this page and watch how this note adapts to different screen sizes. You can also use this page's [key bindings](#api) to experiment with the API.
 
 ## Installation
 
-Upload `jquery.sidenotes.min.js` to a server and add it to your document's head:
+Grab `jquery.sidenotes.min.js` from the [GitHub repo](https://github.com/acdlite/jquery.sidenotes), upload it to a server, and add it to your document's head:
 
-    <script src="jquery.sidenotes.min.js"></script>
+~~~html
+<script src="jquery.sidenotes.min.js"></script>
+~~~
 
 ### With Bower
 
 jQuery.sidenotes is available as a [Bower](http://bower.io) package.
 
-    bower install jquery.sidenotes
+~~~bash
+bower install jquery.sidenotes --save
+~~~
 
 ## Usage
 
 With no configuration (use sensible defaults):
 
-    // Apply to your post/document container(s).
-    $('.post').sidenotes();
-
+~~~javascript
+// Apply to your post/document container(s).
+$('.post').sidenotes();
+~~~
 With options:
 
-    // Pass a options object
-    $('.post').sidenotes({
-      'removeRefMarkRegex':     /-sn$/,
-      'initiallyHidden':        true
-    });
+~~~javascript
+// Pass a options object
+$('.post').sidenotes({
+  'removeRefMarkRegex':     /-sn$/,
+  'initiallyHidden':        true
+});
+~~~
 
 ### Basic
 
@@ -48,21 +55,25 @@ Please note that, by design, jQuery.sidenotes does not apply any CSS styling. It
 
 Built-in methods allow you to toggle between footnotes and sidenotes.
 
-    // Hide the sidenotes, show the footnotes
-    $('.post').sidenotes('hide');
+~~~javascript
+// Hide the sidenotes, show the footnotes
+$('.post').sidenotes('hide');
 
-    // Show the sidenotes, hide the footnotes
-    $('.post').sidenotes('show');
+// Show the sidenotes, hide the footnotes
+$('.post').sidenotes('show');
+~~~
 
 This is perfect for responsive designs, where you may only want to use sidenotes when the screen is large enough to accomodate them.
 
 By default, sidenotes are placed *before* their reference in the text. This is due to the expectation that most designers will want to float them so that they are adjacent to their reference. However, if the sidenotes are not floated, it's probably better to place them *after* their reference in the text, so that the note does not appear before the reference. You can update the `sidenotePlacement` property to toggle between the two states.
 
-    // Place the sidenotes after their references
-    $('.post').sidenotes('sidenotePlacement', 'after')
+~~~javascript
+// Place the sidenotes after their references
+$('.post').sidenotes('sidenotePlacement', 'after')
 
-    // Place the sidenotes before their references
-    $('.post').sidenotes('sidenotePlacement', 'after')
+// Place the sidenotes before their references
+$('.post').sidenotes('sidenotePlacement', 'after')
+~~~
 
 You can set the initial `sidenotePlacement` in the options object.
 
@@ -86,7 +97,7 @@ Default: `'before'`
 
 Use to enable numberless, or reference-less, sidenotes. Footnote IDs that match this regular expression will be displayed without a number.[^refless-sn] The reference mark in the document will be hidden, and the notes that follow will be renumbered accordingly. When the sidenotes are hidden, the original references are restored.
 
-[^refless-sn]: `removeRefMarkRegex` is `/-sn$/`, and the footnote ID corresponding to this note is `fn:refless-sn`. Therefore, the sidenote is rendered without a reference.
+[^refless-sn]: This page's `removeRefMarkRegex` is `/-sn$/`, and the footnote ID corresponding to this note is `fn:refless-sn`. Therefore, the sidenote is rendered without a reference.
 
 The default regular expression will not match any footnote.
 
@@ -144,12 +155,12 @@ Default: `'> ol > li'`
 
 ## API
 
-On this page, you can use the following key bindings to test these methods:
+On this page, you can use the following key bindings to test the API:
 
-* `s`: `$.fn.sidenotes('show')`
-* `h`: `$.fn.sidenotes('hide')`
-* `b`: `$.fn.sidenotes('sidenotePlacement', 'before')`
-* `a`: `$.fn.sidenotes('sidenotePlacement', 'after')`
+* s -- `$.fn.sidenotes('show')`
+* h -- `$.fn.sidenotes('hide')`
+* b -- `$.fn.sidenotes('sidenotePlacement', 'before')`
+* a -- `$.fn.sidenotes('sidenotePlacement', 'after')`
 
 ### $.fn.sidenotes(options)
 

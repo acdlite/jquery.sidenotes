@@ -1,4 +1,10 @@
 name: jQuery.asides
+description: Transform Markdown footnotes into superpowered sidenotes.
 markdown: kramdown
-pygments: true
-baseurl: '/jquery.sidenotes'
+baseurl: /jquery.sidenotes
+
+kramdown:
+  use_coderay: true
+
+  coderay:
+    coderay_line_numbers: nil
