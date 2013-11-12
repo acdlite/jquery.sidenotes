@@ -1,27 +1,3 @@
-// Inline
-
-code, tt {
-  @include font-size(small);
-  margin: 0 2px;
-  padding: 0 5px;
-  white-space: nowrap;
-  border: 1px solid #eaeaea;
-  background-color: #f8f8f8;
-  border-radius: 3px;
-  position: relative;
-  @include rem(top, 1px);
-}
- 
-pre code {
-  margin: 0;
-  padding: 0;
-  white-space: pre;
-  border: none;
-  background: transparent; }
-
-
-// Block
-
 /* Tomorrow Night Eighties Theme */
 /* Original theme - https://github.com/chriskempson/tomorrow-theme */
 /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
@@ -57,33 +33,19 @@ pre code {
   color: #cc99cc;
 }
 
-
-code {
-  background: color(code-inline-background);
-  @include font-family(inconsolata);
-  vertical-align: top;
-  margin: 0 0.2em;
+pre code {
+  display: block;
+  background: #2d2d2d;
+  color: #cccccc;
+  padding: 0.5em;
 }
 
-pre {
-  background: color(almost-black); // Original: #2d2d2d, changed to match header
-
-  code {
-    @include rem(padding, rhythm(1/2));
-
-    margin: 0;
-    display: block;
-    overflow-x: auto;
-    background: none;
-    color: #cccccc;
-
-    overflow-wrap: normal;
-    white-space: pre;
-
-    @include font-size(code);
-
-    &[class^="lang-markdown"], &[class^="lang-text"] {
-      white-space: pre-wrap;
-    }
-  }
+pre .coffeescript .javascript,
+pre .javascript .xml,
+pre .tex .formula,
+pre .xml .javascript,
+pre .xml .vbscript,
+pre .xml .css,
+pre .xml .cdata {
+  opacity: 0.5;
 }

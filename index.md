@@ -13,7 +13,7 @@ Transform [Markdown](http://daringfireball.net/projects/markdown/) footnotes int
 
 Grab `jquery.sidenotes.min.js` from the [GitHub repo](https://github.com/acdlite/jquery.sidenotes), upload it to a server, and add it to your document's head:
 
-~~~html
+~~~
 <script src="jquery.sidenotes.min.js"></script>
 ~~~
 
@@ -27,16 +27,17 @@ bower install jquery.sidenotes --save
 
 ## Usage
 
+Apply the plugin to a jQuery object consisting of each post/document container on the page. There can only be one post per container, and each container must contain both the content of the post and its footnotes.
+
 With no configuration (use sensible defaults):
 
 ~~~javascript
-// Apply to your post/document container(s).
 $('.post').sidenotes();
 ~~~
-With options:
+
+Or, pass an options object:
 
 ~~~javascript
-// Pass a options object
 $('.post').sidenotes({
   'removeRefMarkRegex':     /-sn$/,
   'initiallyHidden':        true

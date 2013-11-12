@@ -1,4 +1,6 @@
 (function() {
+  hljs.initHighlightingOnLoad();
+
   $(function() {
     var $postContainer, config;
     config = {
