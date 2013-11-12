@@ -18,6 +18,6 @@ task 'watch', 'Watch src/ for changes', ->
     print data.toString()
 
 task 'minify', 'Minify the script after build', ->
-  exec 'uglifyjs --output lib/jquery.sidenotes.min.js lib/jquery.sidenotes.js', (err, stdout, stderr) ->
+  exec 'uglifyjs -o lib/jquery.sidenotes.min.js lib/jquery.sidenotes.js -m', (err, stdout, stderr) ->
     throw err if err
     console.log stdout + stderr
