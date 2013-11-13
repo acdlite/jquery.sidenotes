@@ -4,7 +4,9 @@
   "description": "Transform Markdown footnotes into superpowered sidenotes.",
   "private": true,
   "devDependencies": {
-    "bower": "~1.2.6"
+    "bower": "~1.2.6",
+    "async": "~0.2.9",
+    "jasmine-node": "~1.11.0"
   },
   "author": "Andrew Clark <hi@andrewphilipclark.com>",
   "license": "MIT"
