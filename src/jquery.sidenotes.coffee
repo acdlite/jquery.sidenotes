@@ -455,8 +455,4 @@
   # Useful for constructing jQuery selectors
   escapeExpression = (str) -> str.replace(/([#;&,\.\+\*\~':"\!\^$\[\]\(\)=>\|])/g, '\\$1')
 
-  # Alias to console.log
-  # Useful for debugging
-  log = (msg) -> console?.log msg
-
 ) window.jQuery, window
