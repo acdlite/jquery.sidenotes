@@ -6,7 +6,9 @@
   "devDependencies": {
     "bower": "~1.2.6",
     "async": "~0.2.9",
-    "jasmine-node": "~1.11.0"
+    "jquery": "~1.8.3",
+    "jsdom": "~0.8.8",
+    "chai": "~1.8.1"
   },
   "author": "Andrew Clark <hi@andrewphilipclark.com>",
   "license": "MIT"

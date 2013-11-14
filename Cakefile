@@ -38,6 +38,13 @@ build = (callback) ->
         callback null
   ]
 
+task 'test', 'Run tests', ->
+  mocha = spawn 'mocha', ['--compilers', 'coffee:coffee-script', 'test']
+  mocha.stderr.on 'data', (data) ->
+    process.stderr.write data.toString()
+  mocha.stdout.on 'data', (data) ->
+    print data.toString()
+
 task 'compile', 'Compile lib/ from src/', compile
 task 'watch', 'Watch src/ for changes', watch
 task 'minify', 'Minify the script after build', minify

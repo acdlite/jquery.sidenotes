@@ -1,4 +1,4 @@
-(($, window) ->
+(($) ->
 
   # Add plugin to jQuery prototype
   $.fn.extend sidenotes: (option, args...) ->
@@ -455,4 +455,4 @@
   # Useful for constructing jQuery selectors
   escapeExpression = (str) -> str.replace(/([#;&,\.\+\*\~':"\!\^$\[\]\(\)=>\|])/g, '\\$1')
 
-) window.jQuery, window
+) jQuery
