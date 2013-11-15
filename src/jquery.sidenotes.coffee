@@ -60,6 +60,7 @@
       sidenoteGroupElement:               'div'
 
       # Placement of sidenotes before or after reference in text
+      # `placement` is aliased to this option
       sidenotePlacement:                  'before'
 
       # Hide footnote container in addition to footnotes
@@ -235,6 +236,9 @@
 
         # Return current placement
         if @sidenotesAfterRef then 'after' else 'before'
+
+    # Alias
+    placement: (placement, force) -> @sidenotePlacement(placement, force)
 
     # Destroy the plugin by restoring the DOM to its original state
     destroy: ->
