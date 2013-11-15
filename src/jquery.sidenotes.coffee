@@ -1,4 +1,4 @@
-(($, window) ->
+do ($ = jQuery, window, document) ->
 
   # Add plugin to jQuery prototype
   $.fn.extend sidenotes: (option, args...) ->
@@ -60,6 +60,7 @@
       sidenoteGroupElement:               'div'
 
       # Placement of sidenotes before or after reference in text
+      # `placement` is aliased to this option
       sidenotePlacement:                  'before'
 
       # Hide footnote container in addition to footnotes
@@ -99,6 +100,10 @@
     constructor: (postContainerEl, options) ->
       
       $.extend @options, options
+
+      # 'Placement' should be an alias for 'sidenotePlacement'
+      # 'sidenotePlacement' is redundant given the new name of the plugin
+      @options.sidenotePlacement = @options.placement or @options.sidenotePlacement 
       
       # Element that contains all the posts content and footnotes
       # There should be only one post per container
@@ -235,6 +240,9 @@
 
         # Return current placement
         if @sidenotesAfterRef then 'after' else 'before'
+
+    # Alias
+    placement: (placement, force) -> @sidenotePlacement(placement, force)
 
     # Destroy the plugin by restoring the DOM to its original state
     destroy: ->
@@ -454,9 +462,3 @@
   # Function to escape special characters in a string
   # Useful for constructing jQuery selectors
   escapeExpression = (str) -> str.replace(/([#;&,\.\+\*\~':"\!\^$\[\]\(\)=>\|])/g, '\\$1')
-
-  # Alias to console.log
-  # Useful for debugging
-  log = (msg) -> console?.log msg
-
-) window.jQuery, window
