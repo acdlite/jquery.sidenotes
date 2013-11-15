@@ -1,4 +1,4 @@
-(($) ->
+do ($ = jQuery, window, document) ->
 
   # Add plugin to jQuery prototype
   $.fn.extend sidenotes: (option, args...) ->
@@ -100,6 +100,10 @@
     constructor: (postContainerEl, options) ->
       
       $.extend @options, options
+
+      # 'Placement' should be an alias for 'sidenotePlacement'
+      # 'sidenotePlacement' is redundant given the new name of the plugin
+      @options.sidenotePlacement = @options.placement or @options.sidenotePlacement 
       
       # Element that contains all the posts content and footnotes
       # There should be only one post per container
@@ -458,5 +462,3 @@
   # Function to escape special characters in a string
   # Useful for constructing jQuery selectors
   escapeExpression = (str) -> str.replace(/([#;&,\.\+\*\~':"\!\^$\[\]\(\)=>\|])/g, '\\$1')
-
-) jQuery

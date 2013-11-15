@@ -8,7 +8,9 @@ expect = chai.expect
 window = jsdom.jsdom().createWindow()
 document = window.document
 
-$ = global.jQuery = jQuery.create(window)
+global.jQuery = $ = jQuery.create(window)
+global.window = window
+global.document = document
 
 require '../lib/jquery.sidenotes.js'
 
@@ -42,13 +44,25 @@ sidenotesAreHidden = ->
     notesAreHidden = $(this).is(':hidden')
   return notesAreHidden
 
+placementAfterTest = ->
+  expect($pivot(1).next().is($sidenote(1))).to.be.true
+  expect($pivot(2).next().is($group(1))).to.be.true
+  expect($pivot(3).next().is($sidenote(4))).to.be.true
+  expect($pivot(4).next().is($group(2))).to.be.true
+
+placementBeforeTest = ->
+  expect($pivot(1).prev().is($sidenote(1))).to.be.true
+  expect($pivot(2).prev().is($group(1))).to.be.true
+  expect($pivot(3).prev().is($sidenote(4))).to.be.true
+  expect($pivot(4).prev().is($group(2))).to.be.true
+
 plugin = (args...) -> $postContainer().sidenotes(args...)
 
 describe 'Plugin initialization:', ->
 
   describe 'Default constructor', ->
 
-    before ->
+    beforeEach ->
       setup()
       plugin()
 
@@ -63,10 +77,7 @@ describe 'Plugin initialization:', ->
       expect($sidenote(7).parent().is($group(2))).to.be.true
 
     it 'should insert sidenotes before the ancestor of its ref mark that is a direct child of the post container', ->
-      expect($pivot(1).prev().is($sidenote(1))).to.be.true
-      expect($pivot(2).prev().is($group(1))).to.be.true
-      expect($pivot(3).prev().is($sidenote(4))).to.be.true
-      expect($pivot(4).prev().is($group(2))).to.be.true
+      placementBeforeTest()
 
     it 'should hide the footnotes', ->
       expect(footnotesAreHidden()).to.be.true
@@ -79,14 +90,14 @@ describe 'Plugin initialization:', ->
 
       expect(footnotesAreHidden()).to.be.false
 
-    after ->
+    afterEach ->
       teardown()
 
 describe 'API:', ->
 
-  describe "'hide'", ->
+  describe "#hide", ->
 
-    before ->
+    beforeEach ->
       setup()
       plugin()
       plugin 'hide'
@@ -97,12 +108,12 @@ describe 'API:', ->
     it 'should show the footnotes', ->
       expect(footnotesAreHidden()).to.be.false
 
-    after ->
+    afterEach ->
       teardown()
 
-  describe "'show'", ->
+  describe "#show", ->
 
-    before ->
+    beforeEach ->
       setup()
       plugin()
       plugin 'show'
@@ -113,25 +124,12 @@ describe 'API:', ->
     it 'should hide the footnotes', ->
       expect(footnotesAreHidden()).to.be.true
 
-    after ->
+    afterEach ->
       teardown()
 
+  describe "#sidenotePlacement", ->
 
-  placementAfterTest = ->
-    expect($pivot(1).next().is($sidenote(1))).to.be.true
-    expect($pivot(2).next().is($group(1))).to.be.true
-    expect($pivot(3).next().is($sidenote(4))).to.be.true
-    expect($pivot(4).next().is($group(2))).to.be.true
-
-  placementBeforeTest = ->
-    expect($pivot(1).prev().is($sidenote(1))).to.be.true
-    expect($pivot(2).prev().is($group(1))).to.be.true
-    expect($pivot(3).prev().is($sidenote(4))).to.be.true
-    expect($pivot(4).prev().is($group(2))).to.be.true
-
-  describe "'sidenotePlacement'", ->
-
-    before ->
+    beforeEach ->
       setup()
       plugin()
 
@@ -143,22 +141,49 @@ describe 'API:', ->
       plugin 'sidenotePlacement', 'before'
       placementBeforeTest()
 
-    after ->
+    afterEach ->
       teardown()
 
-  describe "'placement'", ->
+  describe "#placement", ->
 
-    before ->
+    beforeEach ->
       setup()
       plugin()
 
-    it "'after' should be an alias for 'sidenotePlacement' 'after'", ->
+    it "'after' should be an alias for sidenotePlacement 'after'", ->
       plugin 'placement', 'after'
       placementAfterTest()
 
-    it "'before' should be an alias for 'sidenotePlacement' 'after'", ->
+    it "'before' should be an alias for sidenotePlacement 'after'", ->
       plugin 'placement', 'before'
       placementBeforeTest()
 
-    after ->
+    afterEach ->
       teardown()
+
+describe "Options:", ->
+  beforeEach ->
+    setup()
+
+  describe "'sidenotePlacement':", ->
+
+    it "'after' should initially place sidenotes after their reference in the text", ->
+      plugin sidenotePlacement: 'after'
+      placementAfterTest()
+
+    it "'before' should initially place sidenotes before their reference in the text", ->
+      plugin sidenotePlacement: 'before'
+      placementBeforeTest()
+
+  describe "'placement':", ->
+
+    it "'after' should be an alias for 'sidenotePlacement': after", ->
+      plugin placement: 'after'
+      placementAfterTest()
+
+    it "'before' should be an alias for 'sidenotePlacement': before", ->
+      plugin placement: 'before'
+      placementBeforeTest()
+
+  afterEach ->
+    teardown()
