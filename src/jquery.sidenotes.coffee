@@ -458,7 +458,6 @@ do ($ = jQuery, window, document) ->
         # Update object property
         @isHidden = true
 
-
   # Function to escape special characters in a string
   # Useful for constructing jQuery selectors
   escapeExpression = (str) -> str.replace(/([#;&,\.\+\*\~':"\!\^$\[\]\(\)=>\|])/g, '\\$1')
