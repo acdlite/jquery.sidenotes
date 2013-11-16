@@ -3,37 +3,26 @@
 async = require 'async'
 
 
-compile = (callback) ->
-  coffee = spawn 'coffee', ['-c', '-o', 'lib', 'src']
-  coffee.stderr.on 'data', (data) ->
+launch = (command, options = [], callback) ->
+  app = spawn command, options
+  app.stderr.on 'data', (data) ->
     process.stderr.write data.toString()
-  coffee.stdout.on 'data', (data) ->
+  app.stdout.on 'data', (data) ->
     print data.toString()
-  coffee.on 'exit', (code) ->
+  app.on 'exit', (code) ->
     callback?() if code is 0
+
+compile = (callback) ->
+  launch 'coffee', ['-c', '-o', 'lib', 'src'], (callback or undefined)
 
 watch = ->
-  coffee = spawn 'coffee', ['-w', '-c', '-o', 'lib', 'src']
-  coffee.stderr.on 'data', (data) ->
-    process.stderr.write data.toString()
-  coffee.stdout.on 'data', (data) ->
-    print data.toString()
+  launch 'coffee', ['-w', '-c', '-o', 'lib', 'src']
 
 minify = (callback) ->
-  uglify = spawn 'uglifyjs', ['-o', 'lib/jquery.sidenotes.min.js', 'lib/jquery.sidenotes.js', '-m']
-  uglify.stderr.on 'data', (data) ->
-    process.stderr.write data.toString()
-  uglify.stdout.on 'data', (data) ->
-    print data.toString()
-  uglify.on 'exit', (code) ->
-    callback?() if code is 0
+  launch 'uglifyjs', ['-o', 'lib/jquery.sidenotes.min.js', 'lib/jquery.sidenotes.js', '-m'], (callback or undefined)
 
 test = (callback) ->
-  mocha = spawn 'mocha', ['--compilers', 'coffee:coffee-script', '--reporter', 'dot', 'test']
-  mocha.stderr.on 'data', (data) ->
-    process.stderr.write data.toString()
-  mocha.stdout.on 'data', (data) ->
-    print data.toString()
+  launch 'mocha', ['--compilers', 'coffee:coffee-script', '--reporter', 'dot', 'test'], (callback or undefined)
 
 build = (callback) ->
   async.series [
@@ -53,4 +42,4 @@ task 'watch', 'Watch src/ for changes', watch
 task 'minify', 'Minify the script after build', minify
 task 'test', 'Run tests', test
 
-task 'build', 'Compile then minify', build
+task 'build', 'Compile, minify, and run tests', build
