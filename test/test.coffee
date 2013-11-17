@@ -20,10 +20,10 @@ setup = -> $('body').html testHtml
 teardown = -> $('body').html ''
 
 $postContainer = -> $('.post')
-$sidenotes = -> $('.sidenote')
-$footnotes = -> $('> ol > li', $footnoteContainer)
-$groups = -> $('.sidenote-group')
 $footnoteContainer = -> $('.footnotes')
+$sidenotes = -> $('.sidenote')
+$footnotes = -> $('> ol > li', $footnoteContainer())
+$groups = -> $('.sidenote-group')
 $pivots = -> $('.pivot')
 
 $footnote = (n) -> $footnotes().eq(n-1)
@@ -184,6 +184,24 @@ describe "Options:", ->
     it "'before' should be an alias for 'sidenotePlacement': before", ->
       plugin placement: 'before'
       placementBeforeTest()
+
+  describe "'initiallyHidden':", ->
+
+    it "true should hide the sidenotes on initialization", ->
+      plugin initiallyHidden: true
+      expect(sidenotesAreHidden()).to.be.true
+
+    it "true should show the footnotes on initialization", ->
+      plugin initiallyHidden: true
+      expect(footnotesAreHidden()).to.be.false
+
+  describe "'removeRefMarkRegex':", ->
+
+    beforeEach ->
+      plugin removeRefMarkRegex: /-sn$/
+
+    it "regex should create reference-less sidenotes for matching footnote ids", ->
+      expect($('.ref-mark', $sidenote(5))).to.have.length 0
 
   afterEach ->
     teardown()
