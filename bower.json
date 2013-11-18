@@ -19,7 +19,8 @@
     "**/.*",
     "node_modules",
     "bower_components",
-    "src"
+    "src",
+    "test"
   ],
   "dependencies": {
     "jquery": "~2.0.2"
