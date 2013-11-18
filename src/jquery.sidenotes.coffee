@@ -172,7 +172,7 @@ do ($ = jQuery, window, document) ->
       # Show the sidenotes, unless configuration says to keep them hidden initially
       # Pass `true` as the `show` method's force parameter, since elements have not yet been added to DOM
       @isHidden = @options.initiallyHidden
-      @show(true) unless @isHidden
+      if @isHidden then @hide(true) else @show(true)
 
     # Show the sidenotes and sidenote groups
     # If `force` is true, method body is run even if `isHidden` is false
@@ -208,10 +208,20 @@ do ($ = jQuery, window, document) ->
       if not @isHidden or force
 
         # Hide sidenotes
-        sidenote.hide() for sidenote in @sidenotes
+        for sidenote in @sidenotes
+
+          # Add to DOM only when force is true
+          sidenote.$pivot[@sidenotePlacement()](sidenote.$sidenote) if (force and not sidenote.hasGroup())
+
+          sidenote.hide()
 
         # Hide groups
-        group.hide() for group in @groups
+        for group in @groups
+
+          # Add to DOM only when force is true
+          group.$pivot[@sidenotePlacement()](group.$group) if force
+
+          group.hide()
 
         # Show footnote container
         @options.show(@$footnoteContainer) if @$footnoteContainer?
