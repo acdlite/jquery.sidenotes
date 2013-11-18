@@ -2,8 +2,8 @@
 (function() {
   var __slice = [].slice;
 
-  (function($, window) {
-    var Sidenote, SidenoteGroup, SidenotesPlugin, escapeExpression, log;
+  (function($, window, document) {
+    var Sidenote, SidenoteGroup, SidenotesPlugin, escapeExpression;
     $.fn.extend({
       sidenotes: function() {
         var args, option;
@@ -62,6 +62,7 @@
       function SidenotesPlugin(postContainerEl, options) {
         var $footnotes, plugin, refCounter;
         $.extend(this.options, options);
+        this.options.sidenotePlacement = this.options.placement || this.options.sidenotePlacement;
         this.$postContainer = $(postContainerEl);
         if (this.options.hideFootnoteContainer) {
           this.$footnoteContainer = $(this.options.footnoteContainerSelector, this.$postContainer);
@@ -91,7 +92,9 @@
           }
         });
         this.isHidden = this.options.initiallyHidden;
-        if (!this.isHidden) {
+        if (this.isHidden) {
+          this.hide(true);
+        } else {
           this.show(true);
         }
       }
@@ -128,11 +131,17 @@
           _ref = this.sidenotes;
           for (_i = 0, _len = _ref.length; _i < _len; _i++) {
             sidenote = _ref[_i];
+            if (force && !sidenote.hasGroup()) {
+              sidenote.$pivot[this.sidenotePlacement()](sidenote.$sidenote);
+            }
             sidenote.hide();
           }
           _ref1 = this.groups;
           for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
             group = _ref1[_j];
+            if (force) {
+              group.$pivot[this.sidenotePlacement()](group.$group);
+            }
             group.hide();
           }
           if (this.$footnoteContainer != null) {
@@ -165,6 +174,10 @@
             return 'before';
           }
         }
+      };
+
+      SidenotesPlugin.prototype.placement = function(placement, force) {
+        return this.sidenotePlacement(placement, force);
       };
 
       SidenotesPlugin.prototype.destroy = function() {
@@ -298,12 +311,9 @@
       return SidenoteGroup;
 
     })();
-    escapeExpression = function(str) {
+    return escapeExpression = function(str) {
       return str.replace(/([#;&,\.\+\*\~':"\!\^$\[\]\(\)=>\|])/g, '\\$1');
     };
-    return log = function(msg) {
-      return typeof console !== "undefined" && console !== null ? console.log(msg) : void 0;
-    };
-  })(window.jQuery, window);
+  })(jQuery, window, document);
 
 }).call(this);

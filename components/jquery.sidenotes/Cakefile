@@ -1,23 +1,45 @@
 {print} = require 'util'
-{spawn, exec} = require 'child_process'
+{spawn} = require 'child_process'
+async = require 'async'
 
-task 'compile', 'Compile lib/ from src/', ->
-  coffee = spawn 'coffee', ['-c', '-o', 'lib', 'src']
-  coffee.stderr.on 'data', (data) ->
+
+launch = (command, options = [], callback) ->
+  app = spawn command, options
+  app.stderr.on 'data', (data) ->
     process.stderr.write data.toString()
-  coffee.stdout.on 'data', (data) ->
+  app.stdout.on 'data', (data) ->
     print data.toString()
-  coffee.on 'exit', (code) ->
+  app.on 'exit', (code) ->
     callback?() if code is 0
 
-task 'watch', 'Watch src/ for changes', ->
-  coffee = spawn 'coffee', ['-w', '-c', '-o', 'lib', 'src']
-  coffee.stderr.on 'data', (data) ->
-    process.stderr.write data.toString()
-  coffee.stdout.on 'data', (data) ->
-    print data.toString()
+compile = (callback) ->
+  launch 'coffee', ['-c', '-o', 'lib', 'src'], (callback or undefined)
 
-task 'minify', 'Minify the script after build', ->
-  exec 'uglifyjs -o lib/jquery.sidenotes.min.js lib/jquery.sidenotes.js -m', (err, stdout, stderr) ->
-    throw err if err
-    console.log stdout + stderr
+watch = ->
+  launch 'coffee', ['-w', '-c', '-o', 'lib', 'src']
+
+minify = (callback) ->
+  launch 'uglifyjs', ['-o', 'lib/jquery.sidenotes.min.js', 'lib/jquery.sidenotes.js', '-m'], (callback or undefined)
+
+test = (callback) ->
+  launch 'mocha', ['--compilers', 'coffee:coffee-script', '--reporter', 'dot', 'test'], (callback or undefined)
+
+build = (callback) ->
+  async.series [
+    (callback) ->
+      compile ->
+        callback null
+    (callback) -> 
+      minify ->
+        callback null
+    (callback) -> 
+      test ->
+        callback null
+  ]
+
+task 'compile', 'Compile lib/ from src/', compile
+task 'watch', 'Watch src/ for changes', watch
+task 'minify', 'Minify the script after build', minify
+task 'test', 'Run tests', test
+
+task 'build', 'Compile, minify, and run tests', build
