@@ -5,6 +5,8 @@ title: jQuery.sidenotes
 
 # jQuery.sidenotes
 
+*By [Andrew Clark](http://andrewphilipclark.com/hi)*
+
 Transform [Markdown](http://daringfireball.net/projects/markdown/) footnotes into superpowered[^notes] sidenotes.
 
 [^notes]: Wanna see something cool? Resize this page and watch how this note adapts to different screen sizes.
