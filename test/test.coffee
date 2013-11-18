@@ -95,7 +95,7 @@ describe 'Plugin initialization:', ->
 
 describe 'API:', ->
 
-  describe "#hide", ->
+  describe '#hide', ->
 
     beforeEach ->
       setup()
@@ -111,7 +111,7 @@ describe 'API:', ->
     afterEach ->
       teardown()
 
-  describe "#show", ->
+  describe '#show', ->
 
     beforeEach ->
       setup()
@@ -127,19 +127,21 @@ describe 'API:', ->
     afterEach ->
       teardown()
 
-  describe "#sidenotePlacement", ->
+  describe '#sidenotePlacement', ->
 
     beforeEach ->
       setup()
       plugin()
 
-    it "'after' should place the sidenotes after their reference in the text", ->
-      plugin 'sidenotePlacement', 'after'
-      placementAfterTest()
+    describe "'after'", ->
+      it "'after' should place the sidenotes after their reference in the text", ->
+        plugin 'sidenotePlacement', 'after'
+        placementAfterTest()
 
-    it "'before' should place the sidenotes before their reference in the text", ->
-      plugin 'sidenotePlacement', 'before'
-      placementBeforeTest()
+    describe "'before'", ->
+      it "'before' should place the sidenotes before their reference in the text", ->
+        plugin 'sidenotePlacement', 'before'
+        placementBeforeTest()
 
     afterEach ->
       teardown()
@@ -149,14 +151,16 @@ describe 'API:', ->
     beforeEach ->
       setup()
       plugin()
+      
+    describe "'after'", ->
+      it "'after' should be an alias for sidenotePlacement 'after'", ->
+        plugin 'placement', 'after'
+        placementAfterTest()
 
-    it "'after' should be an alias for sidenotePlacement 'after'", ->
-      plugin 'placement', 'after'
-      placementAfterTest()
-
-    it "'before' should be an alias for sidenotePlacement 'after'", ->
-      plugin 'placement', 'before'
-      placementBeforeTest()
+    describe "'before'", ->
+      it "'before' should be an alias for sidenotePlacement 'after'", ->
+        plugin 'placement', 'before'
+        placementBeforeTest()
 
     afterEach ->
       teardown()
