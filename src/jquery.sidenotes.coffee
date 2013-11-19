@@ -71,11 +71,13 @@ do ($ = jQuery, window, document) ->
       # Must return new sidenote jQuery object
       # It's a good idea to use `sidenoteElement` and `refMarkClass` options
       formatSidenote:                     (footnoteHtml, id, ref) ->
-                                             $sidenote = $("<#{@sidenoteElement}/>", class: @sidenoteClass)
-                                               .html(footnoteHtml)
-                                               .attr('id', id)
-                                             $sidenote.prepend($('<span/>', class: @refMarkClass, 'data-ref': ref).html(ref)) if ref?
-                                             $sidenote
+                                            $sidenote = $("<#{@sidenoteElement}/>", class: @sidenoteClass)
+                                              .html(footnoteHtml)
+                                              .attr('id', id)
+                                            if ref?
+                                              $sidenote.attr 'data-ref', ref
+                                              $sidenote.prepend($('<span/>', class: @refMarkClass).html(ref))
+                                            return $sidenote
 
       formatSidenoteID:                   (footnoteID) ->
                                             footnoteID.replace( /^f/, 's')
