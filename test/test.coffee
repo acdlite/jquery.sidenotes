@@ -234,6 +234,12 @@ describe "Options:", ->
       plugin sidenoteGroupClass: 'sidenote-group bar'
       expect($group(1).hasClass('bar')).to.be.true
 
+  describe "'refMarkClass'", ->
+
+    it "should determine the class added to each sidenote's reference mark", ->
+      plugin refMarkClass: 'ref-mark baz'
+      expect($('.ref-mark').eq(0).hasClass('baz')).to.be.true
+
   afterEach ->
     plugin 'destroy'
     teardown()
