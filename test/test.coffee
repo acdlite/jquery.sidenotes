@@ -169,8 +169,8 @@ describe "Options:", ->
   beforeEach ->
     setup()
 
-  describe "'initiallyHidden':", ->
-    it "true should keep the sidenotes hidden initially", ->
+  describe "'initiallyHidden'", ->
+    it "should keep the sidenotes hidden initially if true", ->
       plugin initiallyHidden: true
       expect(sidenotesAreHidden()).to.be.true
 
@@ -200,11 +200,17 @@ describe "Options:", ->
       plugin removeRefMarkRegex: /-sn$/
       expect($('.ref-mark', $sidenote(4))).to.have.length 0
 
-  describe "'sidenoteElement':", ->
+  describe "'sidenoteElement'", ->
 
     it "should determine the element type of the sidenotes", ->
       plugin sidenoteElement: 'div'
       expect($sidenote(1).is('div')).to.be.true
+
+  describe "'sidenoteGroupElement'", ->
+
+    it "should determine the element type of the sidenote groups", ->
+      plugin sidenoteGroupElement: 'aside'
+      expect($group(1).is('aside')).to.be.true
 
   afterEach ->
     teardown()
