@@ -240,6 +240,19 @@ describe "Options:", ->
       plugin refMarkClass: 'ref-mark baz'
       expect($('.ref-mark').eq(0).hasClass('baz')).to.be.true
 
+  describe "'footnoteContainerSelector'", ->
+
+    it "should determine the selector used to find the footnote container", ->
+      $footnoteContainer().removeClass('.footnotes')
+      plugin footnoteContainerSelector: '.footnote-container'
+      expect($sidenotes()).to.have.length 7
+
+  describe "'footnoteSelector'", ->
+
+    it "should determine the selector used to find the footnotes, relative to the footnote container", ->
+      plugin footnoteSelector: '.footnote-list li'
+      expect($sidenotes()).to.have.length 7
+
   afterEach ->
     plugin 'destroy'
     teardown()
