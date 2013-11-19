@@ -16,9 +16,6 @@ require '../lib/jquery.sidenotes.js'
 
 testHtml = fs.readFileSync 'test/test.html', 'utf8'
 
-setup = -> $('body').html testHtml
-teardown = -> $('body').html ''
-
 $postContainer = -> $('.post')
 $footnoteContainer = -> $('.footnotes')
 $sidenotes = -> $('.sidenote')
@@ -30,6 +27,11 @@ $footnote = (n) -> $footnotes().eq(n-1)
 $sidenote = (n) -> $sidenotes().eq(n-1)
 $group = (n) -> $groups().eq(n-1)
 $pivot = (n) -> $pivots().eq(n-1)
+
+setup = ->
+  $('body').html testHtml
+teardown = -> 
+  $('body').html ''
 
 footnotesAreHidden = ->
   containerIsHidden = $footnoteContainer().is(':hidden')
@@ -68,6 +70,7 @@ describe 'Plugin initialization:', ->
 
     it 'should create the same number of sidenotes as footnotes', ->
       expect($sidenotes()).to.have.length 7
+      plugin 'destroy'
 
     it 'should group adjacent sidenotes', ->
       expect($sidenote(2).parent().is($group(1))).to.be.true
@@ -75,12 +78,15 @@ describe 'Plugin initialization:', ->
       expect($sidenote(5).parent().is($group(2))).to.be.true
       expect($sidenote(6).parent().is($group(2))).to.be.true
       expect($sidenote(7).parent().is($group(2))).to.be.true
+      plugin 'destroy'
 
     it 'should insert sidenotes before the ancestor of its ref mark that is a direct child of the post container', ->
       placementBeforeTest()
+      plugin 'destroy'
 
     it 'should hide the footnotes', ->
       expect(footnotesAreHidden()).to.be.true
+      plugin 'destroy'
 
     it 'should be able to be destroyed', ->
       plugin 'destroy'
@@ -109,6 +115,7 @@ describe 'API:', ->
       expect(footnotesAreHidden()).to.be.false
 
     afterEach ->
+      plugin 'destroy'
       teardown()
 
   describe '#show', ->
@@ -125,6 +132,7 @@ describe 'API:', ->
       expect(footnotesAreHidden()).to.be.true
 
     afterEach ->
+      plugin 'destroy'
       teardown()
 
   describe '#sidenotePlacement', ->
@@ -144,6 +152,7 @@ describe 'API:', ->
         placementBeforeTest()
 
     afterEach ->
+      plugin 'destroy'
       teardown()
 
   describe "#placement", ->
@@ -163,6 +172,7 @@ describe 'API:', ->
         placementBeforeTest()
 
     afterEach ->
+      plugin 'destroy'
       teardown()
 
 describe "Options:", ->
@@ -212,5 +222,12 @@ describe "Options:", ->
       plugin sidenoteGroupElement: 'aside'
       expect($group(1).is('aside')).to.be.true
 
+  describe "'sidenoteClass'", ->
+
+    it "should determine the class added to each sidenote", ->
+      plugin sidenoteClass: 'sidenote foo'
+      expect($sidenote(1).hasClass('foo')).to.be.true
+
   afterEach ->
+    plugin 'destroy'
     teardown()

@@ -99,7 +99,7 @@ do ($ = jQuery, window, document) ->
 
     constructor: (postContainerEl, options) ->
       
-      $.extend @options, options
+      @options = $.extend {}, @options, options
 
       # 'Placement' should be an alias for 'sidenotePlacement'
       # 'sidenotePlacement' is redundant given the new name of the plugin
