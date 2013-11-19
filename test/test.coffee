@@ -228,6 +228,12 @@ describe "Options:", ->
       plugin sidenoteClass: 'sidenote foo'
       expect($sidenote(1).hasClass('foo')).to.be.true
 
+  describe "'sidenoteGroupClass'", ->
+
+    it "should determine the class added to each sidenote group", ->
+      plugin sidenoteGroupClass: 'sidenote-group bar'
+      expect($group(1).hasClass('bar')).to.be.true
+
   afterEach ->
     plugin 'destroy'
     teardown()
