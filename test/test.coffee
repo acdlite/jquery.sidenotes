@@ -69,7 +69,7 @@ describe 'Plugin initialization:', ->
       plugin()
 
     it 'should create the same number of sidenotes as footnotes', ->
-      expect($sidenotes()).to.have.length 7
+      expect($sidenotes()).to.have.length 8
       plugin 'destroy'
 
     it 'should group adjacent sidenotes', ->
@@ -87,6 +87,11 @@ describe 'Plugin initialization:', ->
     it 'should hide the footnotes', ->
       expect(footnotesAreHidden()).to.be.true
       plugin 'destroy'
+
+    it 'should correctly deal with nested footnotes', ->
+      console.log $postContainer().html()
+      expect($sidenote(8).prev().is($sidenote(7))).to.be.true
+      expect($sidenote(8).parent().is($group(2))).to.be.true
 
     it 'should be able to be destroyed', ->
       plugin 'destroy'
@@ -245,13 +250,13 @@ describe "Options:", ->
     it "should determine the selector used to find the footnote container", ->
       $footnoteContainer().removeClass('.footnotes')
       plugin footnoteContainerSelector: '.footnote-container'
-      expect($sidenotes()).to.have.length 7
+      expect($sidenotes()).to.have.length 8
 
   describe "'footnoteSelector'", ->
 
     it "should determine the selector used to find the footnotes, relative to the footnote container", ->
       plugin footnoteSelector: '.footnote-list li'
-      expect($sidenotes()).to.have.length 7
+      expect($sidenotes()).to.have.length 8
 
   afterEach ->
     plugin 'destroy'
