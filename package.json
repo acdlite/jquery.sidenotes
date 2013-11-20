@@ -1,6 +1,6 @@
 {
   "name": "jquery.sidenotes",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Transform Markdown footnotes into superpowered sidenotes.",
   "private": true,
   "devDependencies": {
