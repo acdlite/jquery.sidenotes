@@ -118,7 +118,7 @@ do ($ = jQuery, window, document) ->
       @$footnoteContainer = if @$footnoteContainer.size() isnt 0 then @$footnoteContainer else null
 
       # The given footnote selector is relative to the footnote container, so combine them before passing to jQuery constructor
-      $footnotes = $(@options.footnoteContainerSelector + ' ' + @options.footnoteSelector, @$postContainer)
+      @$footnotes = $(@options.footnoteContainerSelector + ' ' + @options.footnoteSelector, @$postContainer)
 
       # Set initial position of sidenotes
       @sidenotesAfterRef = @options.sidenotePlacement is 'after'
@@ -134,7 +134,7 @@ do ($ = jQuery, window, document) ->
       plugin = this
 
       # Iterate through footnote elements
-      $footnotes.each ->
+      @$footnotes.each ->
         footnoteEl = this
 
         # Get footnote ID, to be used to find the note's corresponding reference in the post
@@ -283,7 +283,7 @@ do ($ = jQuery, window, document) ->
 
       # Plugin object
       @owner = owner
-      
+
       # Save footnote ID
       # Use footnote ID to create sidenote ID
       @footnoteID = footnoteEl.id
@@ -302,6 +302,20 @@ do ($ = jQuery, window, document) ->
       @$refMarkSup = @$refMarkAnchor.parent('sup')
       @$refMarkSup = if @$refMarkSup.size() isnt 0 then @$refMarkSup else null
 
+      # Check if footnote is nested (references another footnote)
+      # If so, find the note that it references
+      @isNested = $.contains @owner.$footnoteContainer.get(0), @refMark().get(0)
+      if @isNested
+        
+        # Find the footnote that it references
+        $referringFootnote = @refMark().closest(@owner.$footnotes)
+
+        # Now get the corresponding sidenote object
+        for sidenote in @owner.sidenotes
+          if sidenote.$footnote.is($referringFootnote)
+            @referringSidenote = sidenote
+            break
+
       # Find the ID of the reference mark
       @refMarkID = @refMark().attr('id')
 
@@ -314,8 +328,9 @@ do ($ = jQuery, window, document) ->
       @$sidenote = @owner.options.formatSidenote(@$footnote.html(), @sidenoteID, @ref)
 
       # The element (usually a paragraph) before or after which the sidenote is inserted in DOM
-      # We choose the ancestor of the reference mark that is a first child of the post container
-      @$pivot = @refMark().parentsUntil(@owner.$postContainer).last()
+      # Normally, we choose the ancestor of the reference mark that is a first child of the post container
+      # If the footnote is nested, we choose the pivot of the note that it refers to
+      @$pivot = unless @isNested then @refMark().parentsUntil(@owner.$postContainer).last() else @referringSidenote.$pivot
 
       # If this sidenote is part of a group, this property refers to the SidenoteGroup
       # The object owner is responsible for assigning the group, if it has one
