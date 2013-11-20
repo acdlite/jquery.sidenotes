@@ -1,6 +1,6 @@
 {
   "name": "jquery.sidenotes",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "main": "lib/jquery.sidenotes.js",
   "authors": [
     "Andrew Clark <hi@andrewphilipclark.com>"
@@ -19,7 +19,8 @@
     "**/.*",
     "node_modules",
     "bower_components",
-    "src"
+    "src",
+    "test"
   ],
   "dependencies": {
     "jquery": "~2.0.2"

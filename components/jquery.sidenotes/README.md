@@ -41,6 +41,7 @@ $('.post').sidenotes({
 
 ## TODO
 
+- Improve the docs
 - Write tests for the rest of the spec.
 - Set-up browser based test page with key-bindings (like project page)
 

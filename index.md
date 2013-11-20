@@ -15,6 +15,19 @@ Try it out now by changing the size of your browser window. At full width, notes
 
 You can also use this page's [key bindings](#api) to experiment with the API. For example, press **h** and watch what happens. (Press **s** to reverse the change.)
 
+## Features
+
+* Transform your footnotes into sidenotes.
+* Toggle between footnotes and sidenotes, for instance, in responsive designs.
+* Toggle between placing the sidenotes before[^before] or after their reference in the text.
+* Enable reference-less (numberless) sidenotes, using a custom regular expression.[^nonumber-sn]
+* Works with any Markdown processor.
+* Nested footnotes (footnotes inside footnotes) work, too!
+
+[^before]: Useful for floated sidenotes.
+
+[^nonumber-sn]: This sidenote doesn't have a reference.
+
 ## Installation
 
 Grab `jquery.sidenotes.min.js` from the [GitHub repo](https://github.com/acdlite/jquery.sidenotes), upload it to a server, and add it to your document's head:
