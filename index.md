@@ -157,7 +157,7 @@ The class that is added to each sidenote's reference mark.
 
 Default: `'ref-mark'`
 
-## Addtional options for selectors
+## Additional options for selectors
 
 There is some variation in how Markdown processors generate the markup for footnotes. The default options have been chosen to work across all of them, but if they do not, trying passing a new `footnoteContainerSelector` or `footnoteSelector` as options. If you're still having problems with your Markdown processor, please submit an issue.
 
