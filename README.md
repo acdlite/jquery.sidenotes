@@ -10,7 +10,7 @@ Visit the [project page](http://acdlite.github.io/jquery.sidenotes/) for full de
 
 Grab `jquery.sidenotes.min.js` from the [GitHub repo](https://github.com/acdlite/jquery.sidenotes), upload it to a server, and add it to your document's head:
 
-```
+```html
 <script src="jquery.sidenotes.min.js"></script>
 ```
 
