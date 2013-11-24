@@ -340,14 +340,8 @@ do ($ = jQuery, window, document) ->
       # We will need hide to this for reference-less sidenotes (because it points to nothing)
       $backArrow = $("a[href='##{escapeExpression(@refMarkID)}']", @$sidenote)
 
-      if @noMark()
-
-        # Hide reference mark (actually, the superscript element that contains it)
-        @owner.options.hide(@refMark())
-
-        # Hide back arrow
-        # Check for back arrow's existence, in case it does not exist (It's possible the user has already removed it)
-        @owner.options.hide($backArrow) if $backArrow?
+      # If this is a reference-less sidenote, hide its back arrow
+      @owner.options.hide($backArrow) if $backArrow? and @noMark()
 
       # Keep the sidenote hidden until the plugin object shows it
       @owner.options.hide(@$sidenote)

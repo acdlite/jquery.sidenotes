@@ -89,7 +89,6 @@ describe 'Plugin initialization:', ->
       plugin 'destroy'
 
     it 'should correctly deal with nested footnotes', ->
-      console.log $postContainer().html()
       expect($sidenote(8).prev().is($sidenote(7))).to.be.true
       expect($sidenote(8).parent().is($group(2))).to.be.true
 
