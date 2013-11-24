@@ -53,3 +53,7 @@ Copyright 2013
 [Andrew Clark](http://andrewphilipclark.com)
 
 Licensed under the [MIT License](http://opensource.org/licenses/MIT)
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/acdlite/jquery.sidenotes/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
