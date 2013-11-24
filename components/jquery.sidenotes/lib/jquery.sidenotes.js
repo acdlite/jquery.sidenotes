@@ -229,11 +229,8 @@
         this.$pivot = !this.isNested ? this.refMark().parentsUntil(this.owner.$postContainer).last() : this.referringSidenote.$pivot;
         this.group = null;
         $backArrow = $("a[href='#" + (escapeExpression(this.refMarkID)) + "']", this.$sidenote);
-        if (this.noMark()) {
-          this.owner.options.hide(this.refMark());
-          if ($backArrow != null) {
-            this.owner.options.hide($backArrow);
-          }
+        if (($backArrow != null) && this.noMark()) {
+          this.owner.options.hide($backArrow);
         }
         this.owner.options.hide(this.$sidenote);
         this.isHidden = true;
