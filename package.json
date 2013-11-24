@@ -2,6 +2,8 @@
   "name": "jquery.sidenotes",
   "version": "0.1.4",
   "description": "Transform Markdown footnotes into superpowered sidenotes.",
+  "author": "Andrew Clark <hi@andrewphilipclark.com>",
+  "license": "MIT",
   "private": true,
   "devDependencies": {
     "bower": "~1.2.6",
@@ -10,6 +12,7 @@
     "jsdom": "~0.8.8",
     "chai": "~1.8.1"
   },
-  "author": "Andrew Clark <hi@andrewphilipclark.com>",
-  "license": "MIT"
+  "scripts": {
+    "test": "mocha --compilers coffee:coffee-script"
+  }
 }
