@@ -1,5 +1,7 @@
 # jQuery.sidenotes
 
+[![Build Status](https://travis-ci.org/acdlite/jquery.sidenotes.png?branch=master)](https://travis-ci.org/acdlite/jquery.sidenotes)
+
 Transform [Markdown](http://daringfireball.net/projects/markdown/) footnotes into superpowered sidenotes.
 
 Visit the [project page](http://acdlite.github.io/jquery.sidenotes/) for full details.
