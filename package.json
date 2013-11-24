@@ -5,7 +5,7 @@
   "author": "Andrew Clark <hi@andrewphilipclark.com>",
   "license": "MIT",
   "private": true,
-  "devDependencies": {
+  "dependencies": {
     "bower": "~1.2.6",
     "async": "~0.2.9",
     "jsdom": "~0.8.8",
