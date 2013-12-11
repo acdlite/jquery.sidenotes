@@ -13,7 +13,7 @@ launch = (command, options = [], callback) ->
     callback?() if code is 0
 
 compile = (callback) ->
-  launch 'coffee', ['-c', '-o', 'lib', 'src'], (callback or undefined)
+  launch 'coffee', ['-m', '-c', '-o', 'lib', 'src'], (callback or undefined)
 
 watch = ->
   launch 'coffee', ['-w', '-c', '-o', 'lib', 'src']
