@@ -103,7 +103,7 @@ jQuery.sidenotes is designed to work with zero configuration while also being hi
 
 ### initiallyHidden
 
-By default, the sidenotes are shown immediately after they are created during plugin initializaiton. By setting this to `true`, the sidenotes will remain hidden until explicitly shown with `$.fn.asides('show')`.
+By default, the sidenotes are shown immediately after they are created during plugin initialization. By setting this to `true`, the sidenotes will remain hidden until explicitly shown with `$.fn.asides('show')`.
 
 Default: `false`
 
