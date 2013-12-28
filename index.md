@@ -215,9 +215,15 @@ Destroys the plugin instance. Removes the sidenotes and shows the footnotes.
 * jQuery
 * Markdown-generated content, or markup that mimics it.
 
+## Showcase
+
+If you use this plugin in one of your projects, please let me know[^pull] and I'll add it here.
+
+[^pull]: Or even better, submit a [pull request](https://github.com/acdlite/jquery.sidenotes).
+
 ## License
 
-Copyright 2013
+Copyright 2013  
 [Andrew Clark](http://andrewphilipclark.com)
 
 Licensed under the [MIT License](http://opensource.org/licenses/MIT)
