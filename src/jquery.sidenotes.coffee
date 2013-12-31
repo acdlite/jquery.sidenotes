@@ -50,7 +50,7 @@ do ($ = jQuery, window, document) ->
       # Class to add to sidenotes
       sidenoteClass:                      'sidenote'
 
-      # Class to add to sidenotes
+      # Class to add to sidenote groups
       sidenoteGroupClass:                 'sidenote-group'
 
       # Sidenote DOM element type
