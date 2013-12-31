@@ -92,7 +92,7 @@ By default, sidenotes are placed *before* their reference in the text. This is d
 $('.post').sidenotes('sidenotePlacement', 'after')
 
 // Place the sidenotes before their references
-$('.post').sidenotes('sidenotePlacement', 'after')
+$('.post').sidenotes('sidenotePlacement', 'before')
 ~~~
 
 You can set the initial `sidenotePlacement` in the options object.
