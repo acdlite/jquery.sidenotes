@@ -48,7 +48,7 @@ bower install jquery.sidenotes --save
 
 Use of jQuery.sidenotes requires a working knowledge of JavaScript, jQuery, and CSS. I realize this can be frustrating for non-programmers, who may wish for a one-size-fits-all approach. Please [submit an issue](https://github.com/acdlite/jquery.sidenotes/issues/new) if you have any usability concerns or suggestions.
 
-Apply the plugin to a jQuery object consisting of each post/document container on the page. The post container is the **immediate parent element of the generated Markdown content. The plugin will not work if you target the wrong element.**[^wrapper]
+Apply the plugin to a jQuery object consisting of each post/document container on the page. The post container is the **immediate parent element of the Markdown-generated content. The plugin will not work if you target the wrong element.**[^wrapper]
 
 [^wrapper]: If you're experiencing unexpected behavior, this is likely your problem.
 
