@@ -46,7 +46,9 @@ bower install jquery.sidenotes --save
 
 ## Usage
 
-Apply the plugin to a jQuery object consisting of each post/document container on the page. There can only be one post per container, and each container must contain both the content of the post and its footnotes.
+Apply the plugin to a jQuery object consisting of each post/document container on the page. The post container is the *immediate parent element of the generated Markdown content. The plugin will not work if you target the wrong element.**[^wrapper]
+
+[^wrapper]: If you're experiencing unexpected behavior, this is likely your problem.
 
 With no configuration (use sensible defaults):
 
