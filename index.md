@@ -46,6 +46,8 @@ bower install jquery.sidenotes --save
 
 ## Usage
 
+Use of jQuery.sidenotes requires a working knowledge of JavaScript, jQuery, and CSS. I realize this can be frustrating for non-programmers, who may wish for a one-size-fits-all approach. Please [submit an issue](https://github.com/acdlite/jquery.sidenotes/issues/new) if you have any usability concerns or suggestions.
+
 Apply the plugin to a jQuery object consisting of each post/document container on the page. The post container is the **immediate parent element of the generated Markdown content. The plugin will not work if you target the wrong element.**[^wrapper]
 
 [^wrapper]: If you're experiencing unexpected behavior, this is likely your problem.
@@ -161,7 +163,7 @@ Default: `'ref-mark'`
 
 ## Additional options for selectors
 
-There is some variation in how Markdown processors generate the markup for footnotes. The default options have been chosen to work across all of them, but if they do not, trying passing a new `footnoteContainerSelector` or `footnoteSelector` as options. If you're still having problems with your Markdown processor, please submit an issue.
+There is some variation in how Markdown processors generate the markup for footnotes. The default options have been chosen to work across all of them, but if they do not, trying passing a new `footnoteContainerSelector` or `footnoteSelector` as options. If you're still having problems with your Markdown processor, please [submit an issue](https://github.com/acdlite/jquery.sidenotes/issues/new).
 
 ### footnoteContainerSelector
 
