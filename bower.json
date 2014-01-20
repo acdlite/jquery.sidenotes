@@ -9,6 +9,8 @@
   "dependencies": {
     "jquery": "~2.0.2",
     "responsejs": "~0.7.8",
-    "mousetrap": "~1.4.5"
+    "mousetrap": "~1.4.5",
+    "jquery.sidenotes": "~0.2.0",
+    "highlightjs": "~7.5.0"
   }
 }

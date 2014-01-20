@@ -1,5 +1,7 @@
 # jQuery.sidenotes
 
+[![Build Status](https://travis-ci.org/acdlite/jquery.sidenotes.png?branch=master)](https://travis-ci.org/acdlite/jquery.sidenotes)
+
 Transform [Markdown](http://daringfireball.net/projects/markdown/) footnotes into superpowered sidenotes.
 
 Visit the [project page](http://acdlite.github.io/jquery.sidenotes/) for full details.
@@ -8,7 +10,7 @@ Visit the [project page](http://acdlite.github.io/jquery.sidenotes/) for full de
 
 Grab `jquery.sidenotes.min.js` from the [GitHub repo](https://github.com/acdlite/jquery.sidenotes), upload it to a server, and add it to your document's head:
 
-```
+```html
 <script src="jquery.sidenotes.min.js"></script>
 ```
 
@@ -51,3 +53,7 @@ Copyright 2013
 [Andrew Clark](http://andrewphilipclark.com)
 
 Licensed under the [MIT License](http://opensource.org/licenses/MIT)
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/acdlite/jquery.sidenotes/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+

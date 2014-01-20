@@ -1,6 +1,6 @@
 {
   "name": "jquery.sidenotes",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "main": "lib/jquery.asides.min.js",
   "authors": [
     "Andrew Clark <hi@andrewphilipclark.com>"
@@ -25,13 +25,14 @@
     "jquery": "~2.0.2"
   },
   "homepage": "https://github.com/acdlite/jquery.sidenotes",
-  "_release": "0.1.4",
+  "_release": "0.2.0",
   "_resolution": {
     "type": "version",
-    "tag": "v0.1.4",
-    "commit": "a99895972d8c700d19c8a489b61748ac937819fc"
+    "tag": "v0.2.0",
+    "commit": "b4ed8b69ca5eab591a769aa9daa3e86f67c006c5"
   },
   "_source": "git://github.com/acdlite/jquery.sidenotes.git",
-  "_target": "~0.1.0",
-  "_originalSource": "jquery.sidenotes"
+  "_target": "~0.2.0",
+  "_originalSource": "jquery.sidenotes",
+  "_direct": true
 }
