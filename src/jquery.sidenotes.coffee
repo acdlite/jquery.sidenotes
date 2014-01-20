@@ -99,23 +99,24 @@ do ($ = jQuery, window, document) ->
                                             $el.show()
 
 
-    constructor: (postContainerEl, options) ->
+    constructor: (scope, options) ->
       
       @options = $.extend {}, @options, options
 
       # 'Placement' should be an alias for 'sidenotePlacement'
       # 'sidenotePlacement' is redundant given the new name of the plugin
       @options.sidenotePlacement = @options.placement or @options.sidenotePlacement 
-      
-      # Element that contains all the posts content and footnotes
-      # There should be only one post per container
-      # The other jQuery selectors will be scoped to this object
-      @$postContainer = $(postContainerEl)
 
       # Element that contains the footnotes
       # Only necessary if `hideFootnoteContainer` option is true
-      @$footnoteContainer = $(@options.footnoteContainerSelector, @$postContainer) if @options.hideFootnoteContainer
+      @$footnoteContainer = $(@options.footnoteContainerSelector, scope) if @options.hideFootnoteContainer
       @$footnoteContainer = if @$footnoteContainer.size() isnt 0 then @$footnoteContainer else null
+
+      # Element that contains all the post's content and footnotes
+      # Direct parent element of Markdown-generated content
+      # There should be only one post per container
+      # Other jQuery selectors will be scoped to this object
+      @$postContainer = @$footnoteContainer.parent()
 
       # The given footnote selector is relative to the footnote container, so combine them before passing to jQuery constructor
       @$footnotes = $(@options.footnoteContainerSelector + ' ' + @options.footnoteSelector, @$postContainer)

@@ -66,7 +66,7 @@ describe 'Plugin initialization:', ->
 
     beforeEach ->
       setup()
-      plugin()
+      plugin()    
 
     it 'should create the same number of sidenotes as footnotes', ->
       expect($sidenotes()).to.have.length 8
@@ -260,3 +260,11 @@ describe "Options:", ->
   afterEach ->
     plugin 'destroy'
     teardown()
+
+describe "Edge cases:", ->
+
+  it 'should choose correct element as post container', ->
+    setup()
+    $('.post-wrapper').sidenotes()
+    placementBeforeTest()
+    $('.post-wrapper').sidenotes('destroy')
